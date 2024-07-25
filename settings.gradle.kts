@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "A-DataStore"
 include(":app")
 include(":preference")
+include(":proto")
