@@ -1,6 +1,7 @@
-package com.karthik.a.preference
+package com.karthik.a.preference.utils
 
 import android.app.Application
+import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
@@ -17,9 +18,9 @@ import javax.inject.Singleton
 object DataStoreModule {
     @Provides
     @Singleton
-    fun providePreferenceDataStore(@ApplicationContext application: Application): DataStore<Preferences> {
+    fun providePreferenceDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
         return PreferenceDataStoreFactory.create {
-            application.preferencesDataStoreFile("data_store_karthik")
+            context.preferencesDataStoreFile("data_store_karthik")
         }
     }
 }
