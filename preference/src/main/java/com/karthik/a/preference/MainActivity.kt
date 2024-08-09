@@ -1,6 +1,8 @@
 package com.karthik.a.preference
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,14 +34,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        lifecycleScope.launch {
-            saveName("Hi Karthik, Great")
+        val text = findViewById<TextView>(R.id.tvText)
+        val btnSaveData = findViewById<Button>(R.id.btnSaveData)
+        val btnGetData = findViewById<Button>(R.id.btnGetData)
+
+        btnSaveData.setOnClickListener {
+            lifecycleScope.launch {
+                saveName("Hi Karthik, Great")
+            }
         }
 
-        // Load saved name and display it
-        lifecycleScope.launch {
-            val name = getName()
-            println("karthikdatastore $name")
+        btnGetData.setOnClickListener {
+            // Load saved name and display it
+            lifecycleScope.launch {
+                val name = getName()
+                text.text = name
+                println("karthikdatastore $name")
+            }
         }
     }
 
